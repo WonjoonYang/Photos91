@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+
+<GridPane 
+	xmlns="http://javafx.com/javafx/11"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="photos.view.PhotosController"
+	vgap="10" hgap="10">
+
+	
+    <Text text="Enter ID" GridPane.valignment="BOTTOM"/>
+    <TextField fx:id="ID" prefColumnCount="10" promptText="John Doe" GridPane.rowIndex="2" />
+	<Button fx:id="logIn" text="Log In" GridPane.rowIndex="3" onAction="#convert" GridPane.halignment="CENTER"/>
+	<padding>
+		<Insets top="10" right="10" bottom="10" left="10"/>
+	</padding>
+</GridPane>
