@@ -57,28 +57,22 @@ public class AdminController {
 		dialog.setHeaderText("Enter ID");
 		dialog.setContentText("Enter ID: ");
 		
-		boolean success = false;
-		while(!success) {
-			Optional<String> result = dialog.showAndWait();
-			if (result.isPresent()) {
-				String UID = result.get();
-				if(PhotosApp.users.get(UID)==null) {
-					User newUser = new User(UID);
-					PhotosApp.users.put(UID, newUser);
-					obsList.add(UID);
-					
-					PhotosApp.writeUsers();
-					success = true;
-				}else {
-					//ID already exist.
-					Alert warning = new Alert(AlertType.WARNING);
-					warning.initOwner(mainStage);
-					warning.setTitle("Warning");
-					warning.setContentText("ID already exists.");
-					warning.showAndWait();
-				}
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()) {
+			String UID = result.get();
+			if(PhotosApp.users.get(UID)==null) {
+				User newUser = new User(UID);
+				PhotosApp.users.put(UID, newUser);
+				obsList.add(UID);
+				
+				PhotosApp.writeUsers();
 			}else {
-				break;
+				//ID already exist.
+				Alert warning = new Alert(AlertType.WARNING);
+				warning.initOwner(mainStage);
+				warning.setTitle("Warning");
+				warning.setContentText("The ID \'" +UID+ "\' is already being used.  Please try another ID.");
+				warning.showAndWait();
 			}
 		}
 		
